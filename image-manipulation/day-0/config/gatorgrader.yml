@@ -1,0 +1,34 @@
+---
+name: cmpsc-100-week-2-day-0
+break: true
+indent: 4
+---
+
+0_week-2-worksheet-0-PIL.ipynb:
+    ConfirmFileExists
+    CountMarkdownTags --tag image --count 1
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "from PIL import Image, ImageDraw" --count 1 --exact
+
+1_week-2-worksheet-collage.ipynb:
+    ConfirmFileExists
+    CountMarkdownTags --tag image --count 1
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "from PIL import Image, ImageDraw" --count 1 --exact
+
+worksheet_0_image.png:
+    ConfirmFileExists
+    
+f1_week-2-worksheet-dealership.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "from PIL import Image, ImageDraw" --count 1 --exact
+    MatchFileFragment --fragment ".save(" --count 1 --exact
+    MatchFileFragment --fragment ".polygon(" --count 1
+    MatchFileFragment --fragment ".ellipse(" --count 1
+    MatchFileFragment --fragment ".rectangle(" --count 1
+    
+the_art.png:
+    ConfirmFileExists
+
+ExecuteCommand --command "python3 f1_week-2-worksheet-dealership.py"
