@@ -1,0 +1,36 @@
+---
+name: cmpsc-100-week-2-day-1
+break: true
+indent: 4
+---
+
+cropped.png:
+    ConfirmFileExists
+    
+pasted.png:
+    ConfirmFileExists
+    
+resized.png:
+    ConfirmFileExists
+    
+rotated90.png:
+    ConfirmFileExists    
+    
+rotated180.png:
+    ConfirmFileExists      
+
+rotated270.png:
+    ConfirmFileExists  
+    
+putPixel.png:
+    ConfirmFileExists
+    
+gomringer_poem.png:
+    ConfirmFileExists
+    
+saroyan_poem.png:
+    ConfirmFileExists
+    
+0_week-2-worksheet-files.ipynb:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
