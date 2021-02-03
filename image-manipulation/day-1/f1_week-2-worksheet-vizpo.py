@@ -1,67 +1,66 @@
-# Import required libraries
 from PIL import Image, ImageDraw, ImageFont
 
 def prepare_text(text, align, size):
     
-    # Setup typeface details/path
-    face = 'type/space-mono.ttf'
+    # load typeface
+    face = "type/space-mono.ttf"
     
-    # Create font from type at a given size
-    font = ImageFont.truetype(face,size)
+    # Create font from te type given a size
+    font = ImageFont.truetype(face, size)
     
-    # Get picture dimensions
+    # Get the picture dimension
+    # Access picture via "global" scope
     pic_w, pic_h = picture.size
     type_w, type_h = draw.textsize(text, font=font)
     
     if align == "center":
         point = (
-            (pic_w - type_w) / 2, # <-- center text horizontally
-            (pic_h - type_h) / 2  # <-- center text vertically
+            (pic_w - type_w) / 2, # center the element horizontally
+            (pic_h - type_h) / 2  # center the element vertically
         )
     elif align == "right-bottom":
         point = (
-            pic_w - type_w - 50,  # <-- calculate "x" boundary, give 50 px barrier
-            pic_h - type_h - 50   # <-- calculate "y" boundary, give 50 px barrier
+            pic_w - type_w - 50, # calculate where in the x dim
+            pic_h - type_h - 50  # calculate where in the y dim
         )
     
     return point, font
 
 def apply_text(text, origin, font):
-
-    # Use draw object to apply text
+    
+    # Use the draw object ("global" scope)
     draw.text(
         (
             origin
         ),
-        text,                     # <-- source text to write
-        fill='white',             # <-- color of text
-        font=font                 # <-- font object to use when writing
+        text,
+        fill=(255,153,255),
+        font=font
     )
 
-# Open source file
+# Open source
 poem = open("poems/gomringer_poem.txt","r")
 lines = poem.read()
 
-# Create image to write to
+# Canvas
 picture = Image.new("RGB",(1024,768))
 
-# Set up ability to draw on the picture
+# Create a draw object
 draw = ImageDraw.Draw(picture)
 
-# Center poem text
-pos, font = prepare_text(lines, "center", 30)
+# Determine how to write/space textual element
+pos, font = prepare_text(lines,"center",48)
 
-# Write poem text to image
+# get the text into the image
 apply_text(lines, pos, font)
 
-# Provide attribution text with newline character
-attr = '"Silence"\nEugen Gomringer'
+attr = "Silence\nEugen Gomringer"
 
-# Right-bottom justify attribution
-pos, font = prepare_text(attr, "right-bottom", 20)
+# Reuse the placement, preparation function
+pos, font = prepare_text(attr,"right-bottom",30)
 
-# Write attribution to image
+# Reuse the apply function
 apply_text(attr, pos, font)
 
-# Save picture
+# Save picture step
 picture.save("gomringer_poem.png")
