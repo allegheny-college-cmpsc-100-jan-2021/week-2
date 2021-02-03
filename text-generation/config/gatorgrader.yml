@@ -1,0 +1,24 @@
+---
+name: cmpsc-100-week-2-day-2
+break: true
+indent: 4
+---
+
+f1_week-2-worksheet-sonnets.py:
+    ConfirmFileExists
+
+cento.txt:
+    ConfirmFileExists
+
+dada.txt:
+    ConfirmFileExists
+
+sonnet.txt:
+    ConfirmFileExists
+
+0_week-2-worksheet-text-generation.ipynb:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    
+ExecuteCommand --command "python3 f1_week-2-worksheet-sonnets.py"
+MatchCommandFragment --command "less sonnet.txt | wc -l" --fragment "13" --count 1 --exact
